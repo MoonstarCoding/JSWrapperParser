@@ -55,8 +55,8 @@ export const _parseImports = (module) => {
         default: null,
         named: token.specifiers.map((spec) => {
           return spec.imported === null
-            ? { name: spec.local.value, as: spec.local.value }
-            : { name: spec.imported.value, as: spec.local.value };
+            ? { name: spec?.local?.value, as: spec?.local?.value }
+            : { name: spec?.imported?.value, as: spec?.local?.value }; // Special import styles and things like node_modules end up throwing a silent error here without the ? operator
         }),
       };
     });
